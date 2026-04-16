@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Plainly Works — Websites, Local SEO, Automation & Digital Systems for local service businesses in the GTA & Southern Ontario."/>
+  <title>Plainly Works — More Customers. Less Guesswork.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue:#5B9BD5; --blue-dark:#3d7ab5; --navy:#0f2240;
+      --text:#1a2e4a; --muted:#5a6b80; --border:#e2eaf4;
+      --white:#ffffff; --bg:#f7fafd;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden;}
+
+    /* NAV */
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+    .nav-logo{display:flex;align-items:center;gap:10px;}
+    .nav-links{display:flex;gap:28px;align-items:center;}
+    .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;font-weight:400;transition:color .2s;}
+    .nav-links a:hover{color:var(--blue);}
+    .nav-cta{background:var(--blue)!important;color:white!important;padding:9px 20px;border-radius:8px;font-weight:500;}
+    .nav-cta:hover{background:var(--blue-dark)!important;}
+
+    /* HERO */
+    .hero{padding:80px 40px 72px;background:linear-gradient(160deg,#f0f7ff 0%,#fff 55%,#f7fafd 100%);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,#d4e9f9 0%,transparent 70%);pointer-events:none;}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:#e8f4ff;color:var(--blue-dark);font-size:13px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid #c5dcf0;margin-bottom:28px;}
+    .badge::before{content:'●';font-size:8px;color:var(--blue);}
+    .hero h1{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.15;color:var(--navy);max-width:740px;margin-bottom:22px;letter-spacing:-1px;}
+    .hero h1 span{color:var(--blue);}
+    .hero>p{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:40px;font-weight:300;line-height:1.7;}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+    .btn-p{background:var(--blue);color:white;border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .15s;}
+    .btn-p:hover{background:var(--blue-dark);transform:translateY(-1px);}
+    .btn-s{background:white;color:var(--navy);border:1.5px solid var(--border);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color .2s,transform .15s;}
+    .btn-s:hover{border-color:var(--blue);transform:translateY(-1px);}
+    .trust{display:flex;gap:28px;margin-top:52px;padding-top:36px;border-top:1px solid var(--border);flex-wrap:wrap;justify-content:center;}
+    .trust-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+    .trust-num{font-family:'Sora',sans-serif;font-weight:700;font-size:26px;color:var(--navy);}
+    .trust-lbl{font-size:13px;color:var(--muted);}
+
+    /* SECTIONS */
+    .sec{padding:80px 40px;max-width:1100px;margin:0 auto;}
+    .sec-lbl{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+    .sec-title{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,3vw,36px);color:var(--navy);margin-bottom:14px;letter-spacing:-.5px;}
+    .sec-sub{font-size:16px;color:var(--muted);max-width:520px;margin-bottom:52px;font-weight:300;line-height:1.7;}
+
+    /* SERVICES */
+    .svc-bg{background:var(--bg);}
+    .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+    .svc-card{background:white;border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:box-shadow .2s,transform .2s;}
+    .svc-card:hover{box-shadow:0 8px 30px rgba(91,155,213,.12);transform:translateY(-3px);}
+    .svc-icon{width:44px;height:44px;border-radius:10px;background:#e8f4ff;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px;}
+    .svc-card h3{font-family:'Sora',sans-serif;font-weight:600;font-size:16px;color:var(--navy);margin-bottom:10px;}
+    .svc-card p{font-size:14px;color:var(--muted);line-height:1.6;}
+
+    /* HOW IT WORKS */
+    .steps{display:flex;flex-direction:column;}
+    .step{display:flex;gap:28px;align-items:flex-start;padding-bottom:36px;}
+    .step:last-child{padding-bottom:0;}
+    .step-l{display:flex;flex-direction:column;align-items:center;}
+    .step-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:white;font-family:'Sora',sans-serif;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step-line{width:1px;flex:1;min-height:40px;background:var(--border);margin-top:8px;}
+    .step:last-child .step-line{display:none;}
+    .step-c{padding-top:10px;}
+    .step-c h3{font-family:'Sora',sans-serif;font-weight:600;font-size:17px;color:var(--navy);margin-bottom:8px;}
+    .step-c p{font-size:15px;color:var(--muted);line-height:1.6;}
+
+    /* TESTIMONIALS */
+    .testi-bg{background:var(--navy);}
+    .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+    .testi-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 24px;}
+    .stars{color:#f9c846;font-size:15px;margin-bottom:16px;letter-spacing:2px;}
+    .testi-card p{font-size:15px;color:#c8d8ea;line-height:1.7;margin-bottom:20px;}
+    .testi-auth{display:flex;align-items:center;gap:12px;}
+    .auth-av{width:38px;height:38px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:600;font-size:13px;color:white;}
+    .auth-name{font-size:14px;font-weight:500;color:white;}
+    .auth-title{font-size:12px;color:#7a9ab5;}
+
+    /* CTA STRIP */
+    .cta-strip{background:var(--blue);padding:60px 40px;text-align:center;}
+    .cta-strip h2{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,36px);color:white;margin-bottom:14px;letter-spacing:-.5px;}
+    .cta-strip>p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:30px;}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-w{background:white;color:var(--blue-dark);border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s;}
+    .btn-w:hover{transform:translateY(-2px);}
+    .btn-ow{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.5);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;}
+    .btn-ow:hover{border-color:white;}
+
+    /* CONTACT */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+    .form-left h2{font-family:'Sora',sans-serif;font-weight:700;font-size:28px;color:var(--navy);margin-bottom:14px;letter-spacing:-.5px;}
+    .form-left>p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+    .ci{display:flex;flex-direction:column;gap:16px;}
+    .ci-item{display:flex;align-items:center;gap:12px;}
+    .ci-icon{width:36px;height:36px;border-radius:8px;background:#e8f4ff;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+    .ci-text{font-size:14px;color:var(--muted);}
+    .ci-text strong{color:var(--navy);display:block;font-weight:500;font-size:15px;}
+    .form{display:flex;flex-direction:column;gap:16px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .field{display:flex;flex-direction:column;gap:6px;}
+    .field label{font-size:13px;font-weight:500;color:var(--navy);}
+    .field input,.field select,.field textarea{border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;transition:border-color .2s;outline:none;background:white;}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);}
+    .field textarea{resize:vertical;min-height:100px;}
+    .field input::placeholder,.field textarea::placeholder{color:#b0bfce;}
+    .form-sub{background:var(--blue);color:white;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+    .form-sub:hover{background:var(--blue-dark);}
+    .success{display:none;background:#eaf9f0;border:1px solid #a3dcbb;border-radius:12px;padding:28px;text-align:center;}
+    .success h3{font-family:'Sora',sans-serif;font-weight:600;color:#1a5c3a;margin-bottom:8px;}
+    .success p{font-size:14px;color:#2e7d55;}
+
+    /* FOOTER */
+    footer{background:var(--navy);padding:48px 40px 28px;color:#8ba3c0;}
+    .footer-top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:36px;}
+    .footer-brand{max-width:280px;}
+    .footer-brand p{font-size:14px;margin-top:12px;line-height:1.6;color:#6a84a0;}
+    .footer-col h4{font-size:13px;font-weight:600;color:white;margin-bottom:14px;letter-spacing:.5px;}
+    .footer-col a{display:block;font-size:14px;color:#6a84a0;text-decoration:none;margin-bottom:10px;transition:color .2s;}
+    .footer-col a:hover{color:#7BB8E8;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;font-size:13px;color:#4a6480;}
+
+    @media(max-width:768px){
+      nav{padding:14px 20px;}
+      .nav-links{display:none;}
+      .hero{padding:52px 20px;}
+      .sec{padding:56px 20px;}
+      .form-grid{grid-template-columns:1fr;}
+      .form-row{grid-template-columns:1fr;}
+      .cta-strip{padding:48px 20px;}
+      footer{padding:40px 20px 24px;}
+      .trust{gap:20px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="12" fill="#1e3f6e"/><polyline points="10,48 22,32 32,40 48,16" stroke="#5B9BD5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="40,16 48,16 48,24" stroke="#5B9BD5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <svg width="130" height="28" viewBox="0 0 220 36" fill="none"><text x="0" y="27" font-family="Sora,sans-serif" font-weight="700" font-size="26" fill="#0f2240" letter-spacing="-0.8">Plainly</text><text x="108" y="27" font-family="Sora,sans-serif" font-weight="700" font-size="26" fill="#5B9BD5" letter-spacing="-0.8">Works.</text></svg>
+    </div>
+    <div class="nav-links">
+      <a href="#">Services</a>
+      <a href="#">How It Works</a>
+      <a href="#">About</a>
+      <a href="#contact" class="nav-cta">Get a Free Audit</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">Digital Growth for Local Business</div>
+    <h1>More customers.<br>Less guesswork.<br><span>Plainly Works.</span></h1>
+    <p>We build websites, Google SEO, and smart automation systems that help local service businesses win more leads — on autopilot.</p>
+    <div class="hero-btns">
+      <button class="btn-p" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Free Business Audit</button>
+      <button class="btn-s" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See How It Works →</button>
+    </div>
+    <div class="trust">
+      <div class="trust-item"><span class="trust-num">50+</span><span class="trust-lbl">Local businesses served</span></div>
+      <div class="trust-item"><span class="trust-num">3×</span><span class="trust-lbl">Average lead increase</span></div>
+      <div class="trust-item"><span class="trust-num">14 days</span><span class="trust-lbl">Average launch time</span></div>
+      <div class="trust-item"><span class="trust-num">100%</span><span class="trust-lbl">Satisfaction guarantee</span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div class="svc-bg">
+    <div class="sec">
+      <p class="sec-lbl">What We Do</p>
+      <h2 class="sec-title">Everything your business needs to grow online</h2>
+      <p class="sec-sub">No jargon. No fluff. Just practical digital systems built around getting you more customers.</p>
+      <div class="svc-grid">
+        <div class="svc-card"><div class="svc-icon">🌐</div><h3>Professional Websites</h3><p>Fast, mobile-first websites designed to turn visitors into calls and form leads — not just look pretty.</p></div>
+        <div class="svc-card"><div class="svc-icon">📍</div><h3>Local Google SEO</h3><p>Rank higher on Google Maps and local search so customers find you before they find your competitors.</p></div>
+        <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Automation Tools</h3><p>Auto follow-ups, booking systems, and review requests — so you never drop a lead again.</p></div>
+        <div class="svc-card"><div class="svc-icon">📊</div><h3>Custom Digital Systems</h3><p>CRM setups, client portals, and dashboards built around how your business actually operates.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how">
+    <div class="sec" style="max-width:900px;">
+      <p class="sec-lbl">The Process</p>
+      <h2 class="sec-title">Simple. Transparent. Fast.</h2>
+      <p class="sec-sub">Most clients are live and getting leads within 2–3 weeks.</p>
+      <div class="steps">
+        <div class="step"><div class="step-l"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-c"><h3>Free Business Audit</h3><p>We review your current online presence — website, Google listing, competitors — and send you a plain-language report showing exactly what's hurting your leads.</p></div></div>
+        <div class="step"><div class="step-l"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-c"><h3>We Build It Together</h3><p>You tell us your goals, we handle everything: design, copy, setup, and integration. No confusing tech, no back-and-forth — just results.</p></div></div>
+        <div class="step"><div class="step-l"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-c"><h3>Launch & Optimize</h3><p>Your site goes live, Google rankings start climbing, and your systems capture every lead. We monitor and improve so results compound over time.</p></div></div>
+        <div class="step"><div class="step-l"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-c"><h3>Grow On Autopilot</h3><p>With automation in place, new customers find you, book you, and leave reviews — while you focus on the work you actually do.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testi-bg">
+    <div class="sec">
+      <p class="sec-lbl" style="color:#7BB8E8;">Client Results</p>
+      <h2 class="sec-title" style="color:white;">Real businesses. Real results.</h2>
+      <p class="sec-sub" style="color:#8ba3c0;">From cleaning companies to contractors — here's what working with Plainly Works looks like.</p>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="stars">★★★★★</div><p>"We went from barely showing up on Google to being the top result in our area. Phone hasn't stopped ringing since."</p><div class="testi-auth"><div class="auth-av">MR</div><div><div class="auth-name">Mike R.</div><div class="auth-title">Owner, Ridgeline Roofing</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★★</div><p>"The automated follow-up system alone has probably recovered 15–20 jobs that would have gone cold. Worth every penny."</p><div class="testi-auth"><div class="auth-av">SL</div><div><div class="auth-name">Sandra L.</div><div class="auth-title">Owner, Sparkle Cleaning Co.</div></div></div></div>
+        <div class="testi-card"><div class="stars">★★★★★</div><p>"Finally a digital agency that speaks plain English. No BS, no bloated retainers. They just built what we needed and it works."</p><div class="testi-auth"><div class="auth-av">DT</div><div><div class="auth-name">Dave T.</div><div class="auth-title">Founder, TerraForm Landscaping</div></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <h2>Ready to grow your business?</h2>
+    <p>Get a free audit and see exactly what's holding your online presence back.</p>
+    <div class="cta-btns">
+      <button class="btn-w" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get My Free Audit</button>
+      <a href="tel:4163128406" class="btn-ow">Call Us: 416-312-8406</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="sec" style="max-width:1000px;">
+      <div class="form-grid">
+        <div class="form-left">
+          <p class="sec-lbl" style="margin-bottom:8px;">Get In Touch</p>
+          <h2>Let's talk about your business</h2>
+          <p>Fill out the form and we'll send you a personalized audit of your online presence — completely free, no obligation.</p>
+          <div class="ci">
+            <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-text"><strong>416-312-8406</strong>Mon–Fri, 8am–6pm EST</div></div>
+            <div class="ci-item"><div class="ci-icon">✉️</div><div class="ci-text"><strong>info@plainlyworks.com</strong>We reply within one business day</div></div>
+            <div class="ci-item"><div class="ci-icon">🌐</div><div class="ci-text"><strong>www.plainlyworks.com</strong>Coming soon</div></div>
+            <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Burlington, Ontario</strong>Serving the GTA & Southern Ontario</div></div>
+          </div>
+        </div>
+        <div>
+          <div id="form-wrap">
+            <div class="form">
+              <div class="form-row">
+                <div class="field"><label>First Name</label><input type="text" id="f-name" placeholder="John"/></div>
+                <div class="field"><label>Last Name</label><input type="text" placeholder="Smith"/></div>
+              </div>
+              <div class="field"><label>Business Name</label><input type="text" placeholder="Smith Plumbing Co."/></div>
+              <div class="field"><label>Phone Number</label><input type="tel" placeholder="(416) 000-0000"/></div>
+              <div class="field"><label>Email</label><input type="email" placeholder="john@yourbusiness.com"/></div>
+              <div class="field">
+                <label>What do you need help with?</label>
+                <select><option value="" disabled selected>Choose a service...</option><option>New Website</option><option>Local Google SEO</option><option>Automation & Follow-ups</option><option>Full Digital Package</option><option>Not sure — just send the audit</option></select>
+              </div>
+              <div class="field"><label>Tell us about your business (optional)</label><textarea placeholder="What do you do, where are you located, and what's your biggest challenge right now?"></textarea></div>
+              <button class="form-sub" onclick="submitForm()">Send My Free Audit Request →</button>
+            </div>
+          </div>
+          <div class="success" id="success-msg">
+            <h3>✓ Request received!</h3>
+            <p>We'll review your business and send your free audit within one business day. Talk soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg width="32" height="32" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="12" fill="#1e3f6e"/><polyline points="10,48 22,32 32,40 48,16" stroke="#5B9BD5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="40,16 48,16 48,24" stroke="#5B9BD5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          <svg width="120" height="24" viewBox="0 0 220 36" fill="none"><text x="0" y="26" font-family="Sora,sans-serif" font-weight="700" font-size="24" fill="white" letter-spacing="-0.8">Plainly</text><text x="100" y="26" font-family="Sora,sans-serif" font-weight="700" font-size="24" fill="#5B9BD5" letter-spacing="-0.8">Works.</text></svg>
+        </div>
+        <p>Simple, effective digital systems for local service businesses. No fluff — just more customers.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><a href="#">Websites</a><a href="#">Local SEO</a><a href="#">Automation</a><a href="#">Digital Systems</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Case Studies</a><a href="#">Blog</a><a href="#">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:info@plainlyworks.com">info@plainlyworks.com</a><a href="tel:4163128406">416-312-8406</a><a href="#">Burlington, Ontario</a><a href="https://www.plainlyworks.com">www.plainlyworks.com</a></div>
+    </div>
+    <div class="footer-bottom">© 2025 Plainly Works. All rights reserved. &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Terms</div>
+  </footer>
+
+  <script>
+    function submitForm(){
+      const n=document.getElementById('f-name').value.trim();
+      if(!n){
+        document.getElementById('f-name').focus();
+        document.getElementById('f-name').style.borderColor='#e24b4a';
+        setTimeout(()=>document.getElementById('f-name').style.borderColor='',2000);
+        return;
+      }
+      document.getElementById('form-wrap').style.display='none';
+      document.getElementById('success-msg').style.display='block';
+    }
+  </script>
+</body>
+</html>
